@@ -30,13 +30,19 @@ import java.util.Date;
  */
 
 public class MainActivity extends Activity {
+    // MIEMBROS DE LA ACTIVITY
 
+    // Componentes Interfaz de Usuario
     private static final int SELECT_FILE = 1;
     private Button cameraButton;
     private ImageView imageView;
     private Uri file;
     private Button gallery;
 
+    /**
+     *
+     * @param v
+     */
     public void abrirGaleria(View v) {
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -46,6 +52,12 @@ public class MainActivity extends Activity {
                 SELECT_FILE);
     }
 
+    /**
+     *
+     * @param requestCode
+     * @param resultCode
+     * @param imageReturnedIntent
+     */
     protected void onActivityResult(int requestCode, int resultCode,
                                     Intent imageReturnedIntent) {
         if (requestCode == 100) {

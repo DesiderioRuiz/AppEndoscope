@@ -15,26 +15,48 @@ public class UsersDB extends SQLiteOpenHelper {
     Context contexto;
     String SentenciaSQL = "Create table Usuarios (nombre TEXT, usuario TEXT, contrasenia TEXT)";
 
-    //Costructor
+    /**
+     * @param context
+     * @param name
+     * @param factory
+     * @param version
+     */
     public UsersDB(Context context, String name, SQLiteDatabase.CursorFactory
             factory, int version) {
         super(context, name, factory, version);
         contexto = context;
     }
 
-    //Método de Creación
+
+    /**
+     * Método de Creación
+     *
+     * @param db
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
         //Ejecutar la Sentencia SQL
         db.execSQL(SentenciaSQL);
     }
 
-    //Método de Actualización
+
+    /**
+     * Método de Actualización
+     *
+     * @param db
+     * @param oldVersion
+     * @param newVersion
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
 
+    /**
+     * @param nombre
+     * @param usuario
+     * @param pass
+     */
     public void insert(String nombre, String usuario, String pass) {
 
         //Conexion a la BBDD
@@ -51,6 +73,10 @@ public class UsersDB extends SQLiteOpenHelper {
         bd.close();
     }
 
+    /**
+     * @param nombre
+     * @param pass
+     */
     public void update(String nombre, String pass) {
         //Conexion a la BBDD
         UsersDB conexionDB = new UsersDB(contexto, "Usuarios", null, 1);
@@ -65,6 +91,10 @@ public class UsersDB extends SQLiteOpenHelper {
         bd.close();
     }
 
+    /**
+     * @param nombre
+     * @return
+     */
     public String select(String nombre) {
         Cursor lista;
         String nombre1 = "";

@@ -27,6 +27,9 @@ public class RegisterActivity extends Activity {
     private Button btnRegister;
 
 
+    /**
+     * @param savedInstanceState
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +64,11 @@ public class RegisterActivity extends Activity {
         });
     }
 
+    /**
+     * @param nombre
+     * @param usuario
+     * @param pass
+     */
     public void insert(String nombre, String usuario, String pass) {
 
         //Conexion a la BBDD
@@ -77,9 +85,12 @@ public class RegisterActivity extends Activity {
         bd.close();
     }
 
-    /*
-Metodo para comprobar si existe usuario,sino existe lo crea
-*/
+    /**
+     *
+     * @param nombre
+     * @param usuario
+     * @param pass
+     */
     public void comprobarRegistro(String nombre, String usuario, String pass) {
 
         Cursor listaRegistros;

@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,8 +22,10 @@ public class LoginActivity extends Activity {
     private EditText usuario;
     private EditText contrasenia;
     private Button iniciar;
-    ParcelableClass User = new ParcelableClass();
 
+    /**
+     * @param savedInstanceState
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,16 +58,25 @@ public class LoginActivity extends Activity {
                 startActivity(m);
             }
         });
+
+        // Escuchador al click de la cámara
+        iniciar.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                comprobarContrasenia(usuario.getText().toString(), contrasenia.getText().toString());
+            }
+        });
+
     }
 
     /**
-     * Metodo para realizar update si existe usuario, sino existe realiza insert
+     * @param usuario
+     * @param contrasenia
      */
-
     public void comprobarContrasenia(String usuario, String contrasenia) {
 
         Cursor listaRegistros;
-        String Nombre = "";
+        String Usuario = "";
         String Contrasenia = "";
 
         UsersDB UD = new UsersDB(this, "Usuarios", null, 1);
@@ -76,13 +86,11 @@ public class LoginActivity extends Activity {
 
         if (listaRegistros.moveToFirst()) {
             do {
-                Nombre = listaRegistros.getString(0);
-                Contrasenia = listaRegistros.getString(1);
-
+                Usuario = listaRegistros.getString(1);
+                Contrasenia = listaRegistros.getString(2);
 
             } while (listaRegistros.moveToNext());
-            Log.i("Contrasenia:::", Contrasenia);
-            if (Nombre.equals(usuario) && Contrasenia.equals(contrasenia)) {
+            if (Usuario.equals(usuario) && Contrasenia.equals(contrasenia)) {
                 Intent intent =
                         new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
