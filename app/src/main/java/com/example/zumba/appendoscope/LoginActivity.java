@@ -54,7 +54,7 @@ public class LoginActivity extends Activity {
 
             public void onClick(View v) {
                 // Switching to Register screen
-                Intent m = new Intent(getApplicationContext(), MainActivity.class);
+                Intent m = new Intent(getApplicationContext(), CameraActivity.class);
                 startActivity(m);
             }
         });
@@ -63,42 +63,47 @@ public class LoginActivity extends Activity {
         iniciar.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                comprobarContrasenia(usuario.getText().toString(), contrasenia.getText().toString());
+                if (findUser(usuario.getText().toString(), contrasenia.getText().toString())) {
+                    Intent intent =
+                            new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
     }
 
     /**
+     * Método para comprobar el usuario existente en la BBDD
+     *
      * @param usuario
      * @param contrasenia
      */
-    public void comprobarContrasenia(String usuario, String contrasenia) {
+    public boolean findUser(String usuario, String contrasenia) {
 
-        Cursor listaRegistros;
         String Usuario = "";
         String Contrasenia = "";
+        Cursor lista;
+        boolean ok = false;
 
-        UsersDB UD = new UsersDB(this, "Usuarios", null, 1);
-        SQLiteDatabase bd = UD.getReadableDatabase();
+        UsersDB BBDD = new UsersDB(this, "Usuarios", null, 1);
+        SQLiteDatabase bd = BBDD.getReadableDatabase();
 
-        listaRegistros = bd.rawQuery("SELECT *" + "FROM Usuarios;", null);
+        lista = bd.rawQuery("SELECT *" + "FROM Usuarios;", null);
 
-        if (listaRegistros.moveToFirst()) {
+        if (lista.moveToFirst()) {
             do {
-                Usuario = listaRegistros.getString(1);
-                Contrasenia = listaRegistros.getString(2);
-
-            } while (listaRegistros.moveToNext());
+                Usuario = lista.getString(1);
+                Contrasenia = lista.getString(2);
+            } while (lista.moveToNext());
             if (Usuario.equals(usuario) && Contrasenia.equals(contrasenia)) {
-                Intent intent =
-                        new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intent);
+                ok = true;
                 Toast.makeText(getBaseContext(), "Usuario registrado", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(getBaseContext(), " Usuario o contraseña incorrecta", Toast.LENGTH_SHORT).show();
             }
         }
         bd.close();
+        return ok;
     }
 }

@@ -12,8 +12,8 @@
     <string name="areNew">Are you new user? sign up here</string>
     <string name="useCam">I just want to use the camera</string>
     <string name="startHere">I just want to use the camera</string>
-
-    You already have one? Start here
+    <string name="cam">Camera</string>
+    <string name="gal">Gallery</string>
 
 
 </resources>

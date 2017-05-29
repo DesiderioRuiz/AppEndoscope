@@ -19,6 +19,7 @@ public class SplashScreenActivity extends Activity {
     private static final long SPLASH_SCREEN_DELAY = 3000;
 
     /**
+     * Crea la actividad
      *
      * @param savedInstanceState
      */

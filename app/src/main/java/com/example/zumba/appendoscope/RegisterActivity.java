@@ -28,6 +28,8 @@ public class RegisterActivity extends Activity {
 
 
     /**
+     * Crea la actividad
+     *
      * @param savedInstanceState
      */
     @Override
@@ -86,7 +88,6 @@ public class RegisterActivity extends Activity {
     }
 
     /**
-     *
      * @param nombre
      * @param usuario
      * @param pass

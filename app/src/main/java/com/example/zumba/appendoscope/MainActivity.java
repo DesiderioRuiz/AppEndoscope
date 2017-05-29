@@ -40,6 +40,7 @@ public class MainActivity extends Activity {
     private Button gallery;
 
     /**
+     * Método para abrir la galería del dispositivo
      *
      * @param v
      */
@@ -53,6 +54,7 @@ public class MainActivity extends Activity {
     }
 
     /**
+     * Obtiene el resultado de una actividad
      *
      * @param requestCode
      * @param resultCode
@@ -122,13 +124,6 @@ public class MainActivity extends Activity {
         }
     }
 
-/*    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }*/
-
     /**
      * Método para comprobar los permisos asignados
      *
@@ -181,13 +176,4 @@ public class MainActivity extends Activity {
         return new File(mediaStorageDir.getPath() + File.separator +
                 "IMG_" + timeStamp + ".jpg");
     }
-
-    /**
-     * Método que comprueba los resultados de las operaciones
-     *
-     * @param requestCode
-     * @param resultCode
-     * @param data
-     */
-
 }

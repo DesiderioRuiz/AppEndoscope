@@ -4,14 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SplashScreenActivity"
-    android:background="@color/colorPrimary">
+    android:background="@drawable/fondo">
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:contentDescription="@string/app_name"
         android:scaleType="center"
-        android:src="@drawable/cameraicon" />
+        android:src="@drawable/cameraicon"
+        android:layout_below="@+id/link_to_register"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="11dp" />
     <TextView
         android:id="@+id/link_to_register"
         android:layout_width="fill_parent"
@@ -21,7 +24,10 @@
         android:gravity="center"
         android:text="Endoscope"
         android:fontFamily="sans-serif-smallcaps"
-        android:textColor="#fff"
+        android:textColor="#FF2E3AE4"
+        android:textStyle="bold"
         android:textSize="60dp" />
+
+
 
 </RelativeLayout>

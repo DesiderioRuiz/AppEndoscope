@@ -16,6 +16,8 @@ public class UsersDB extends SQLiteOpenHelper {
     String SentenciaSQL = "Create table Usuarios (nombre TEXT, usuario TEXT, contrasenia TEXT)";
 
     /**
+     * Creación de BBDD
+     *
      * @param context
      * @param name
      * @param factory
@@ -27,9 +29,8 @@ public class UsersDB extends SQLiteOpenHelper {
         contexto = context;
     }
 
-
     /**
-     * Método de Creación
+     * Crea la actividad
      *
      * @param db
      */
@@ -39,9 +40,8 @@ public class UsersDB extends SQLiteOpenHelper {
         db.execSQL(SentenciaSQL);
     }
 
-
     /**
-     * Método de Actualización
+     * Actualiza la actividad
      *
      * @param db
      * @param oldVersion
@@ -53,6 +53,8 @@ public class UsersDB extends SQLiteOpenHelper {
     }
 
     /**
+     * Método de Inserción
+     *
      * @param nombre
      * @param usuario
      * @param pass
@@ -74,6 +76,8 @@ public class UsersDB extends SQLiteOpenHelper {
     }
 
     /**
+     * Método de Actualización
+     *
      * @param nombre
      * @param pass
      */
@@ -92,6 +96,8 @@ public class UsersDB extends SQLiteOpenHelper {
     }
 
     /**
+     * Método de Selección
+     *
      * @param nombre
      * @return
      */
