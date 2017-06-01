@@ -44,8 +44,8 @@ public class LoginActivity extends Activity {
 
             public void onClick(View v) {
                 // Switching to Register screen
-                Intent i = new Intent(getApplicationContext(), RegisterActivity.class);
-                startActivity(i);
+                Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -54,8 +54,8 @@ public class LoginActivity extends Activity {
 
             public void onClick(View v) {
                 // Switching to Register screen
-                Intent m = new Intent(getApplicationContext(), CameraActivity.class);
-                startActivity(m);
+                Intent intent = new Intent(getApplicationContext(), CameraActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -89,7 +89,7 @@ public class LoginActivity extends Activity {
         UsersDB BBDD = new UsersDB(this, "Usuarios", null, 1);
         SQLiteDatabase bd = BBDD.getReadableDatabase();
 
-        lista = bd.rawQuery("SELECT *" + "FROM Usuarios;", null);
+        lista = bd.rawQuery("SELECT *" + "FROM Usuarios where usuario='" + usuario + "';", null);
 
         if (lista.moveToFirst()) {
             do {

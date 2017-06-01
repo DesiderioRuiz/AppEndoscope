@@ -14,6 +14,7 @@
     <string name="startHere">I just want to use the camera</string>
     <string name="cam">Camera</string>
     <string name="gal">Gallery</string>
+    <string name="action_settings">Settings</string>
 
 
 </resources>
